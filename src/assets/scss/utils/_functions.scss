@@ -1,0 +1,38 @@
+// Init framework
+@function parseInt($n) {
+  @return $n / ($n * 0 + 1);
+}
+
+@function rem($values) {
+  $root: 10; // Based on HTML reset html { font-size: 62.5%; }
+  $return: ();
+
+  @each $value in $values {
+    @if $value == '0px' or $value == auto {
+      $return: append($return, $value);
+    } @else if type-of($value) == number {
+      $value: parseInt($value);
+      $return: append($return, ($value / $root) * 1rem);
+    } @else {
+      $return: append($return, $value);
+    }
+  }
+
+  @if length($return) == 1 {
+    @return nth($return, 1);
+  } @else {
+    @return $return;
+  }
+}
+
+@function px($values) {
+  $return: ();
+  @each $ratio in $values {
+    $return: append($return, $size * $ratio);
+  }
+  @return $return;
+}
+
+@function size($values) {
+  @return rem(px($values));
+}

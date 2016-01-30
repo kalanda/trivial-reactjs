@@ -1,0 +1,17 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+dist
+tmp
+
+# Ignore OS generated files #
+.DS_Store*
+Thumbs.db
+
+# Ignore hidden folders #
+# This takes care of .tmp, .sass-cache, and many others #
+.*/
+
+bower_components
+dist
+node_modules
+npm-debug.log

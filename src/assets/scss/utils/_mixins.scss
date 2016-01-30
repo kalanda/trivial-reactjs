@@ -1,0 +1,100 @@
+/**
+ * Optimize legibility of texts
+ */
+@mixin optimize-legibility {
+  text-rendering: optimizeLegibility;
+  -webkit-text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/**
+ * Replaces the text of the node with a background image
+ *
+ * @param  $type:   "png"         File extension, by default "png"
+ * @param  $width:  false         Width in px  or false
+ * @param  $height: false         Height in px or false
+ *                                (if width and height are false, background-size is centered instead of cover)
+ *
+ * @param  $retina: false         Adds retina (ignored with file extension is SVG)
+ */
+@mixin image-replacement($file, $type: "png", $width: false, $height: false, $retina: false) {
+
+
+  @if $width and $height {
+    width: $width;
+    height: $height;
+    background-size: $width $height;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  } @else {
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+
+  @if $retina == false or $type == "svg" {
+    background-image: url($file + '.' + $type);
+  }
+
+  @if $retina == true {
+
+    background-image: url($file + '.' + $type);
+
+    $ratio : 2;
+    @media  only screen and (-webkit-min-device-pixel-ratio: $ratio),
+            only screen and (min--moz-device-pixel-ratio: $ratio),
+            only screen and (-o-min-device-pixel-ratio: #{$ratio}/1),
+            only screen and (min-resolution: round($ratio * 96dpi)),
+            only screen and (min-resolution: $ratio * 1dppx) {
+              & {
+                background-image: url($file + '@2x.' + $type) !important;
+              }
+            }
+
+    $ratio : 3;
+    @media  only screen and (-webkit-min-device-pixel-ratio: $ratio),
+            only screen and (min--moz-device-pixel-ratio: $ratio),
+            only screen and (-o-min-device-pixel-ratio: #{$ratio}/1),
+            only screen and (min-resolution: round($ratio * 96dpi)),
+            only screen and (min-resolution: $ratio * 1dppx) {
+              & {
+                background-image: url($file + '@3x.' + $type) !important;
+              }
+            }
+  }
+
+  // just hide text
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+// Input placeholder mixin
+// ---
+// Generates both styles for placeholder on supported browsers and also
+
+@mixin placeholder {
+  &::-moz-placeholder { @content }
+  &::-webkit-input-placeholder { @content }
+  &:-ms-input-placeholder { @content }
+}
+
+/**
+ * Media mixins
+ */
+@mixin respond-to($media-list) {
+  @each $media in $media-list {
+    @if $media == mobile {
+      @media only screen and (max-width: $horizontal-breakpoint-small) { @content; }
+    }
+    @else if $media == phablet {
+      @media only screen and (min-width: $horizontal-breakpoint-small + 1) and (max-width: $horizontal-breakpoint-medium - 1) { @content; }
+    }
+    @else if $media == tablet {
+      @media only screen and (min-width: $horizontal-breakpoint-medium + 1) and (max-width: $horizontal-breakpoint-large - 1) { @content; }
+    }
+    @else if $media == desktop {
+      @media only screen and (min-width: $horizontal-breakpoint-large) { @content; }
+    }
+  }
+}

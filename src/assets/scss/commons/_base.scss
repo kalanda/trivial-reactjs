@@ -1,0 +1,27 @@
+
+html {
+  background-color: $default-color-app-background;
+  font-family: $default-font-family;
+  font-size: 100%;
+  @include optimize-legibility();
+}
+
+body {
+  background-color: $default-color-app-background;
+  color: $default-color-app-text;
+  font-family: $default-font-family;
+  @include optimize-legibility();
+}
+
+button, input {
+  font-family: $default-font-family;
+}
+
+a, button, input {
+  outline: none;
+  @include optimize-legibility();
+}
+
+img {
+  vertical-align: middle;
+}
