@@ -1,0 +1,21 @@
+.button-component {
+
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: #263134;
+
+  background-color: #25bbbb;
+  padding: 18px 40px;
+  border: none;
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  transition: 200ms background-color;
+
+  &:hover { background-color: white; }
+
+}

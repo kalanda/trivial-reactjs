@@ -1,0 +1,26 @@
+.progress-bar-component {
+
+  position: relative;
+  background-color: #1d2121;
+  height: 22px;
+  padding: 3px;
+  border-radius: 11px;
+  margin: 10px 0;
+
+  & > span {
+    content: '';
+    position: relative;
+    display: block;
+    height: 100%;
+    border-radius: 8px 0 0 8px;
+    width: 50%;
+    background-color: #6f7d80;
+
+    transition-property: background-color, width;
+    transition-duration: 200ms;
+
+    &.state-green  { background-color: #77b452; }
+    &.state-orange { background-color: #bc9135; }
+    &.state-red    { background-color: #e8524b; }
+  }
+}

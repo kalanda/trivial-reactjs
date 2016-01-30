@@ -1,0 +1,38 @@
+.input-radio-component {
+
+  text-align: left;
+
+  input[type="radio"] {
+
+    display:none;
+
+    & + label {
+
+      font-size: 22px;
+      color: #657679;
+      cursor: pointer;
+      transition: 200ms color;
+
+      &:before {
+        content: '';
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        background: url(../images/components/InputRadio/unchecked.svg) 0 50% no-repeat;
+        margin-right: 12px;
+        vertical-align: -4px;
+        transition: 200ms background;
+      }
+    }
+
+    &:checked {
+      & + label {
+        color: white;
+        font-weight: bold;
+        &:before {
+          background: url(../images/components/InputRadio/checked.svg) 0 50% no-repeat;
+        }
+      }
+    }
+  }
+}

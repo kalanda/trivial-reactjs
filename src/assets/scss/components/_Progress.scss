@@ -1,0 +1,12 @@
+.progress-component {
+
+  text-align: center;
+  padding: 0 10%;
+
+  & > .text {
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}

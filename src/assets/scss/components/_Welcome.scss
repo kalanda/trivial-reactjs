@@ -1,0 +1,11 @@
+.welcome-component {
+
+  text-align: center;
+  padding-bottom: 50px;
+
+  & > .text {
+    font-size: 18px;
+    line-height: 28px;
+    padding: 25px 50px 25px 50px;
+  }
+}

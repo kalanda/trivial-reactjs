@@ -1,5 +1,5 @@
 // defaults
-$default-font-family : 'Montserrat', 'Helvetica', sans-serif;
+$default-font-family : 'Proxima Nova', 'Helvetica', sans-serif;
 $default-color-app-background: #2a2f30;
 $default-color-app-text: white;
 
@@ -15,4 +15,11 @@ $default-color-app-text: white;
 // Components
 @import "components/HelloWorld";
 
-
+@import "components/Header";
+@import "components/Welcome";
+@import "components/Button";
+@import "components/Progress";
+@import "components/ProgressBar";
+@import "components/QuestionForm";
+@import "components/AnswersList";
+@import "components/InputRadio";

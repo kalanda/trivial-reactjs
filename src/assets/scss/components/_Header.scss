@@ -1,0 +1,20 @@
+.header-component {
+
+  text-align: center;
+  padding: 34px 0;
+  margin-bottom: 34px;
+  border-bottom: 1px solid #435257;
+
+  h1 {
+    font-size: 72px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+  }
+  p {
+    font-size: 18px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 6.5px;
+  }
+}
