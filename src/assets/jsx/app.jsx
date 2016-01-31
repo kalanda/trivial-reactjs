@@ -5,6 +5,7 @@ import Header from './components/Header';
 import ProgressBar from './components/ProgressBar';
 import Button from './components/Button';
 import InputRadio from './components/InputRadio';
+import AnsweredQuestion from "./components/AnsweredQuestion";
 
 
 var App = React.createClass({
@@ -60,6 +61,17 @@ var App = React.createClass({
             <p><Button text="Start" onClick={this.testClick} /></p>
             <br/>
             <p><Button text="End" /></p>
+
+            <AnsweredQuestion
+              questionText="What is the text of the question 1?"
+              userAnswer="29"
+              correctAnswer="33"
+              />
+            <AnsweredQuestion
+              questionText="What is the text of the question 2?"
+              userAnswer="29"
+              correctAnswer="29"
+              />
           </div>
         );
     }
