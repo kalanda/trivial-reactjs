@@ -10,4 +10,4 @@ export const config = {
   numbersApiBaseUrl: 'http://numbersapi.com/',
 };
 
-//export default config;
+export default config;
