@@ -54,7 +54,7 @@ module.exports = function(grunt) {
               }]]
             },
             files: {
-              '.tmp/<%= app.baseurl %>/assets/js/build.js': '<%= app.source %>/assets/jsx/app.jsx'
+              '.tmp/<%= app.baseurl %>/assets/js/build.js': '<%= app.source %>/assets/jsx/index.jsx'
             }
           },
           dist: {
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
               ]
             },
             files: {
-              '<%= app.dist %>/assets/js/build.js': '<%= app.source %>/assets/jsx/app.jsx'
+              '<%= app.dist %>/assets/js/build.js': '<%= app.source %>/assets/jsx/index.jsx'
             }
           },
         },

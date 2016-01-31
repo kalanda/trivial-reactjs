@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Header from './components/Header';
-import ProgressBar from './components/ProgressBar';
-import Button from './components/Button';
-import InputRadio from './components/InputRadio';
-import AnsweredQuestion from "./components/AnsweredQuestion";
+import { config, TypeOfQuestions } from '../config';
 
+import Header from './Header';
+import ProgressBar from './ProgressBar';
+import Button from './Button';
+import InputRadio from './InputRadio';
+import AnsweredQuestion from "./AnsweredQuestion";
 
 var App = React.createClass({
 
@@ -39,10 +40,23 @@ var App = React.createClass({
     render : function() {
 
         let percent = (100*this.state.elapsed)/30;
+        let headerSubtitle;
+
+        switch(config.typeOfQuestions) {
+          case TypeOfQuestions.YEARS:
+                  headerSubtitle = "of years";
+                  break;
+
+          case TypeOfQuestions.NUMBERS:
+                  headerSubtitle = "of numbers";
+                  break;
+
+          default: headerSubtitle = "";
+        }
 
         return (
           <div className="app-component">
-            <Header subtitle="of numbers"/>
+            <Header subtitle={headerSubtitle}/>
             <br/>
             <ProgressBar percent={percent} />
             <br/>
@@ -77,7 +91,4 @@ var App = React.createClass({
     }
 });
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
+export default App;
