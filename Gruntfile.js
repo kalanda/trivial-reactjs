@@ -3,7 +3,7 @@
 module.exports = function(grunt) {
 
     // Show elapsed time after tasks run
-    require('time-grunt')(grunt);
+    //require('time-grunt')(grunt);
 
     // Load all Grunt tasks
     require('jit-grunt')(grunt);
