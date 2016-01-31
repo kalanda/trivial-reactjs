@@ -13,83 +13,83 @@
     <link rel='stylesheet' type='text/css' href="assets/css/main.css">
   </head>
   <body>
-    <div id="container">
+    <div id="app">
+      <div class="app-component">
+        <div class="header-component">
+          <h1>Trivial</h1>
+          <p>de números</p>
+        </div>
 
-      <div class="header-component">
-        <h1>Trivial</h1>
-        <p>de números</p>
+        <div class="welcome-component">
+          <p class="text">En este trivial pondrás a prueba tu conocimiento sobre los años en los que ocurrieron ciertos hechos (¿En qué año se descubrió América?).</p>
+          <p><button class="button-component">Empezar</button></p>
+        </div>
+
+        <div class="progress-component">
+
+          <p class="text">Pregunta <strong>4</strong> de 10</p>
+
+          <div class="progress-bar-component"><span style="width:10%;"></span></div>
+          <div class="progress-bar-component"><span class="is-green" style="width:33%;"></span></div>
+          <div class="progress-bar-component"><span class="is-orange" style="width:66%;"></span></div>
+          <div class="progress-bar-component"><span class="is-red" style="width:99%;"></span></div>
+
+        </div>
+
+        <form class="question-form-component">
+
+            <p class="question-text">¿Cuantas veces fue acuchillado Julio Cesar?</p>
+
+            <fieldset>
+              <p class="input-radio-component">
+                <input type="radio" name="answer-radio" value="43" id="answer-option-1"> <label for="answer-option-1">34</label>
+              </p>
+              <p class="input-radio-component">
+                <input type="radio" name="answer-radio" value="45" id="answer-option-2"> <label for="answer-option-2">45</label>
+              </p>
+              <p class="input-radio-component">
+                <input type="radio" name="answer-radio" value="6" id="answer-option-3"> <label for="answer-option-3">6</label>
+              </p>
+              <p class="input-radio-component">
+                <input type="radio" name="answer-radio" value="12" id="answer-option-4"> <label for="answer-option-4">12</label>
+              </p>
+            </fieldset>
+
+            <p><button class="button-component">Responder</button></p>
+
+        </form>
+
+        <div class="answers-list-component">
+
+          <div class="answer">
+            <p class="question-text">¿Cuantos años de casamiento se festejan en las bodas de zafiro?</p>
+            <p class="answered-text"><span class="result-correct">45</span></p>
+          </div>
+
+          <div class="answer">
+            <p class="question-text">¿Cual es el número de la suerte del personaje Stepan Mikhailov de Victor Pelvin en la novela “Numbers”?</p>
+            <p class="answered-text"><span class="result-wrong">27</span> <span class="correct-answer">- La respuesta correcta era 34</span></p>
+          </div>
+
+          <div class="answer">
+            <p class="question-text">¿Cuantos años de casamiento se festejan en las bodas de zafiro?</p>
+            <p class="answered-text"><span class="result-correct">45</span></p>
+          </div>
+
+          <div class="answer">
+            <p class="question-text">¿Cual es el número de la suerte del personaje Stepan Mikhailov de Victor Pelvin en la novela “Numbers”?</p>
+            <p class="answered-text"><span class="result-wrong">27</span> <span class="correct-answer">- La respuesta correcta era 34</span></p>
+          </div>
+
+          <div class="answer">
+            <p class="question-text">¿Cual es el número de la suerte del personaje Stepan Mikhailov de Victor Pelvin en la novela “Numbers”?</p>
+            <p class="answered-text"><span class="result-wrong">27</span> <span class="correct-answer">- La respuesta correcta era 34</span></p>
+          </div>
+
+
+
+        </div>
       </div>
-
-      <div class="welcome-component">
-        <p class="text">En este trivial pondrás a prueba tu conocimiento sobre los años en los que ocurrieron ciertos hechos (¿En qué año se descubrió América?).</p>
-        <p><button class="button-component">Empezar</button></p>
-      </div>
-
-      <div class="progress-component">
-
-        <p class="text">Pregunta <strong>4</strong> de 10</p>
-
-        <div class="progress-bar-component"><span style="width:10%;"></span></div>
-        <div class="progress-bar-component"><span class="is-green" style="width:33%;"></span></div>
-        <div class="progress-bar-component"><span class="is-orange" style="width:66%;"></span></div>
-        <div class="progress-bar-component"><span class="is-red" style="width:99%;"></span></div>
-
-      </div>
-
-      <form class="question-form-component">
-
-          <p class="question-text">¿Cuantas veces fue acuchillado Julio Cesar?</p>
-
-          <fieldset>
-            <p class="input-radio-component">
-              <input type="radio" name="answer-radio" value="43" id="answer-option-1"> <label for="answer-option-1">34</label>
-            </p>
-            <p class="input-radio-component">
-              <input type="radio" name="answer-radio" value="45" id="answer-option-2"> <label for="answer-option-2">45</label>
-            </p>
-            <p class="input-radio-component">
-              <input type="radio" name="answer-radio" value="6" id="answer-option-3"> <label for="answer-option-3">6</label>
-            </p>
-            <p class="input-radio-component">
-              <input type="radio" name="answer-radio" value="12" id="answer-option-4"> <label for="answer-option-4">12</label>
-            </p>
-          </fieldset>
-
-          <p><button class="button-component">Responder</button></p>
-
-      </form>
-
-      <div class="answers-list-component">
-
-        <div class="answer">
-          <p class="question-text">¿Cuantos años de casamiento se festejan en las bodas de zafiro?</p>
-          <p class="answered-text"><span class="result-correct">45</span></p>
-        </div>
-
-        <div class="answer">
-          <p class="question-text">¿Cual es el número de la suerte del personaje Stepan Mikhailov de Victor Pelvin en la novela “Numbers”?</p>
-          <p class="answered-text"><span class="result-wrong">27</span> <span class="correct-answer">- La respuesta correcta era 34</span></p>
-        </div>
-
-        <div class="answer">
-          <p class="question-text">¿Cuantos años de casamiento se festejan en las bodas de zafiro?</p>
-          <p class="answered-text"><span class="result-correct">45</span></p>
-        </div>
-
-        <div class="answer">
-          <p class="question-text">¿Cual es el número de la suerte del personaje Stepan Mikhailov de Victor Pelvin en la novela “Numbers”?</p>
-          <p class="answered-text"><span class="result-wrong">27</span> <span class="correct-answer">- La respuesta correcta era 34</span></p>
-        </div>
-
-        <div class="answer">
-          <p class="question-text">¿Cual es el número de la suerte del personaje Stepan Mikhailov de Victor Pelvin en la novela “Numbers”?</p>
-          <p class="answered-text"><span class="result-wrong">27</span> <span class="correct-answer">- La respuesta correcta era 34</span></p>
-        </div>
-
-
-
-      </div>
-
 
     </div>
   </body>
