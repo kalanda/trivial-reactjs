@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Header from './components/Header';
-import ProgressBar from './components/ProgressBar';
-import Button from './components/Button';
-import InputRadio from './components/InputRadio';
-import AnsweredQuestion from "./components/AnsweredQuestion";
-
+import Header from './Header';
+import ProgressBar from './ProgressBar';
+import Button from './Button';
+import InputRadio from './InputRadio';
+import AnsweredQuestion from "./AnsweredQuestion";
 
 var App = React.createClass({
 
@@ -77,7 +76,4 @@ var App = React.createClass({
     }
 });
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
+export default App;
