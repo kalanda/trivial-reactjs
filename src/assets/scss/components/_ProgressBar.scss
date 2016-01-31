@@ -19,8 +19,8 @@
     transition-property: background-color, width;
     transition-duration: 200ms;
 
-    &.state-green  { background-color: #77b452; }
-    &.state-orange { background-color: #bc9135; }
-    &.state-red    { background-color: #e8524b; }
+    &.is-green  { background-color: #77b452; }
+    &.is-orange { background-color: #bc9135; }
+    &.is-red    { background-color: #e8524b; }
   }
 }
