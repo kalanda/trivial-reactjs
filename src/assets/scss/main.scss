@@ -13,6 +13,7 @@ $default-color-app-text: white;
 @import "commons/base";
 
 // Components
+@import "components/App";
 @import "components/Header";
 @import "components/Welcome";
 @import "components/Button";
