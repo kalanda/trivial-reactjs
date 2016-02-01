@@ -14,8 +14,15 @@
 
   cursor: pointer;
 
-  transition: 200ms background-color;
+  transition: 200ms background-color, 200ms opacity;
 
-  &:hover { background-color: white; }
+  &[disabled] {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  &:not([disabled]):hover {
+    background-color: white;
+  }
 
 }
