@@ -1,8 +1,14 @@
 .question-form-component {
 
   text-align: center;
+  padding: 0 0 45px 0;
 
   .question-text {
     font-size: 30px;
+    padding: 45px 0;
+  }
+
+  .fieldset {
+    padding: 0 0 45px 0;
   }
 }
