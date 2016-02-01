@@ -1,53 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { config, TypeOfQuestions } from '../config';
+import Config from '../constants/Config';
+import TypesOfQuestions from '../constants/TypesOfQuestions';
 
 import Header from './Header';
 import ProgressBar from './ProgressBar';
 import Button from './Button';
 import InputRadio from './InputRadio';
-import AnsweredQuestion from "./AnsweredQuestion";
+import AnsweredQuestion from './AnsweredQuestion';
+import QuestionForm from './QuestionForm';
+import GameProgress from './GameProgress';
 
 var App = React.createClass({
 
-    timer : undefined,
-
-    getInitialState : function() {
-      return {
-        elapsed: 0.0
-      }
-    },
-
-    componentDidMount: function() {
-      this.timer = setInterval(this.tick, 100);
-    },
-
-    componentWillUnmount: function(){
-        clearInterval(this.timer);
-    },
-
-    tick: function(){
-        let currentElapsed = this.state.elapsed;
-        let newElapsed = (currentElapsed >= 30) ? 0 : currentElapsed+0.1;
-        this.setState({elapsed: newElapsed });
-    },
-
-    testClick: function(event) {
-      console.log('clicked');
-    },
-
     render : function() {
 
-        let percent = (100*this.state.elapsed)/30;
         let headerSubtitle;
 
-        switch(config.typeOfQuestions) {
-          case TypeOfQuestions.YEARS:
+        switch(Config.typeOfQuestions) {
+          case TypesOfQuestions.ABOUT_YEARS:
                   headerSubtitle = "of years";
                   break;
 
-          case TypeOfQuestions.NUMBERS:
+          case TypesOfQuestions.ABOUT_NUMBERS:
                   headerSubtitle = "of numbers";
                   break;
 
@@ -57,25 +33,15 @@ var App = React.createClass({
         return (
           <div className="app-component">
             <Header subtitle={headerSubtitle}/>
-            <br/>
-            <ProgressBar percent={percent} />
-            <br/>
-            <InputRadio
-              id="answer-option-1"
-              name="answer-option"
-              label="This is the label 1"
-              value="1" />
-            <br/>
-            <InputRadio
-              id="answer-option-2"
-              name="answer-option"
-              label="This is the label 2"
-              value="2" />
-            <br/>
-            <p><Button text="Start" onClick={this.testClick} /></p>
-            <br/>
-            <p><Button text="End" /></p>
-
+            <GameProgress
+              currentQuestion="1"
+              totalQuestions={Config.totalQuestions}
+            />
+            <QuestionForm
+              questionText="What is the text of the question 1?"
+              possibleAnswers={['1','4','5', '2001', '1323']}
+              onUserAnswer={this.handleUserAnswer}
+            />
             <AnsweredQuestion
               questionText="What is the text of the question 1?"
               userAnswer="29"
