@@ -7,6 +7,11 @@ var InputRadio = React.createClass({
       name: React.PropTypes.string.isRequired,
       label: React.PropTypes.string.isRequired,
       value: React.PropTypes.string.isRequired,
+      onChange: React.PropTypes.func,
+    },
+
+    handleChange: function(event){
+      if(this.props.onChange) this.props.onChange(event);
     },
 
     render: function() {
@@ -18,7 +23,13 @@ var InputRadio = React.createClass({
 
       return (
         <p className="input-radio-component">
-          <input type="radio" name={name} value={value} id={id} />
+          <input
+            type="radio"
+            name={name}
+            value={value}
+            id={id}
+            onChange={this.handleChange}
+          />
           <label htmlFor={id}>{label}</label>
         </p>
       );
