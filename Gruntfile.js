@@ -37,7 +37,7 @@ module.exports = function(grunt) {
             images: {
                 options: { livereload: true },
                 files: ['<%= app.source %>/assets/images/**/*.{gif,jpg,jpeg,png,svg,webp}'],
-                tasks: ['copy:server_images']
+                tasks: []
             },
         },
 
@@ -243,6 +243,17 @@ module.exports = function(grunt) {
             ]
         },
 
+        uglify: {
+          dist: {
+            options: {
+              sourceMap: false
+            },
+            files: {
+              '<%= app.dist %>/<%= app.baseurl %>/assets/js/build.js': '<%= app.dist %>/<%= app.baseurl %>/assets/js/build.js'
+            }
+          }
+        }
+
         /*buildcontrol: {
             dist: {
                 options: {
@@ -272,10 +283,11 @@ module.exports = function(grunt) {
         'copy:dist_html',
         'copy:dist_images',
         //'imagemin:dist',
-        //'svgmin',
+        'svgmin',
         'sass:dist',
         'autoprefixer:dist',
-        'browserify:dist'
+        'browserify:dist',
+        'uglify:dist',
     ]);
 
     /*grunt.registerTask('deploy', [
