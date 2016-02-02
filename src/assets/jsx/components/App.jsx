@@ -86,7 +86,6 @@ var App = React.createClass({
       //this.setState({ currentQuestion : null });
 
       QuestionsFactory.generateQuestion(function(question){
-        console.log('new question', question);
         this.setState({
           currentQuestion : question,
           currentQuestionNumber : this.state.currentQuestionNumber+1,
