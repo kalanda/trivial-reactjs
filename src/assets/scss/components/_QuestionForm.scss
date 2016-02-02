@@ -3,15 +3,42 @@
   text-align: center;
   padding: 0 0 45px 0;
 
+  @include respond-to(tablet desktop) {
+  }
+  @include respond-to(phablet) {
+  }
+  @include respond-to(mobile) {
+    padding: 0 20px 45px 20px;
+  }
+
   .question-text {
-    font-size: 30px;
-    padding: 45px 0;
+
+    @include respond-to(tablet desktop) {
+      font-size: 30px;
+      padding: 45px 0;
+    }
+    @include respond-to(phablet) {
+      font-size: 28px;
+      padding: 45px 0;
+    }
+    @include respond-to(mobile) {
+      font-size: 24px;
+      padding: 45px 0;
+    }
   }
 
   .fieldset {
     margin: 0 auto;
-    padding: 0 0 20px 60px;
-    width: 400px;
+
+
+    @include respond-to(phablet tablet desktop) {
+      width: 400px;
+      padding: 0 0 20px 60px;
+    }
+    @include respond-to(mobile) {
+      width: 100%;
+      padding: 0 0 20px 0;
+    }
 
     .input-radio-component {
       float: left;
