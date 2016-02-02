@@ -9,7 +9,8 @@ var QuestionForm = React.createClass({
     propTypes: {
       questionText: React.PropTypes.string.isRequired,
       possibleAnswers: React.PropTypes.array.isRequired,
-      onUserAnswer: React.PropTypes.func,
+      onUserAnswer: React.PropTypes.func.isRequired,
+      onTimeout: React.PropTypes.func.isRequired,
     },
 
     getInitialState: function(){
@@ -30,8 +31,13 @@ var QuestionForm = React.createClass({
 
     tickTimer: function(){
         let currentElapsed = this.state.elapsedTime;
-        let newElapsed = (currentElapsed >= Config.maxSecondsToAnswer) ? 0 : currentElapsed+1;
-        this.setState({elapsedTime: newElapsed });
+
+        if (currentElapsed >= Config.maxSecondsToAnswer) {
+          clearInterval(this.timer);
+          if (this.props.onTimeout) this.props.onTimeout();
+        } else {
+          this.setState({elapsedTime: currentElapsed+1 });
+        }
     },
 
     handleChange: function(event){
