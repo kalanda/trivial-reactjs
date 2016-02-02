@@ -12,10 +12,10 @@
     position: relative;
     display: block;
     height: 100%;
-    border-radius: 8px 0 0 8px;
+    border-radius: 8px;
     width: 50%;
     background-color: #6f7d80;
-    transition: 200ms width, 2s background-color;
+    transition: 1s width linear, 2s background-color;
 
     &.is-green  { background-color: #77b452; }
     &.is-orange { background-color: #bc9135; }

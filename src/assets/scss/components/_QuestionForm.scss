@@ -9,6 +9,14 @@
   }
 
   .fieldset {
-    padding: 0 0 45px 0;
+    margin: 0 auto;
+    padding: 0 0 20px 0;
+    width: 220px;
+
+    .input-radio-component {
+      float: left;
+      width: 50%;
+      padding: 0 0 25px 25px;
+    }
   }
 }
