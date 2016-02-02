@@ -48,7 +48,7 @@ function componseQuestion(data) {
     question.correctAnswer = firstWord+'';
   }
 
-  question.questionText = question.questionText+'?';
+  question.questionText = question.questionText.replace('.', '?');
 
   // Generate possible answers
   let baseNumber = parseInt(firstWord);
