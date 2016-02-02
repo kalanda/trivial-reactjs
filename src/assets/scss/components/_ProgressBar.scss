@@ -15,7 +15,7 @@
     border-radius: 8px;
     width: 50%;
     background-color: #6f7d80;
-    transition: 1s width linear, 2s background-color;
+    transition: 100ms width linear, 2s background-color;
 
     &.is-green  { background-color: #77b452; }
     &.is-orange { background-color: #bc9135; }
