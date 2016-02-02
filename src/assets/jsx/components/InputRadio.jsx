@@ -7,6 +7,7 @@ var InputRadio = React.createClass({
       name: React.PropTypes.string.isRequired,
       label: React.PropTypes.string.isRequired,
       value: React.PropTypes.string.isRequired,
+      checked: React.PropTypes.bool,
       onChange: React.PropTypes.func,
     },
 
@@ -20,6 +21,7 @@ var InputRadio = React.createClass({
       let name = this.props.name;
       let label = this.props.label;
       let value = this.props.value;
+      let checked = this.props.checked;
 
       return (
         <p className="input-radio-component">
@@ -28,6 +30,7 @@ var InputRadio = React.createClass({
             name={name}
             value={value}
             id={id}
+            checked={checked}
             onChange={this.handleChange}
           />
           <label htmlFor={id}>{label}</label>
