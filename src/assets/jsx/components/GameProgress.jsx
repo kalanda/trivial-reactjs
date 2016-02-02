@@ -3,20 +3,22 @@ import React from 'react';
 var GameProgress = React.createClass({
 
     propTypes: {
-      currentQuestion: React.PropTypes.number.isRequired,
-      totalQuestions: React.PropTypes.number.isRequired,
+      currentQuestionNumber: React.PropTypes.number.isRequired,
+      totalQuestionsNumber: React.PropTypes.number.isRequired,
     },
 
     render: function() {
 
-      let currentQuestion = this.props.currentQuestion;
-      let totalQuestions = this.props.totalQuestions;
+      let currentQuestionNumber = this.props.currentQuestionNumber;
+      let totalQuestionsNumber = this.props.totalQuestionsNumber;
 
-      return (
-        <div className="game-progress-component">
-          <p className="text">Question <strong>{currentQuestion}</strong> of {totalQuestions}</p>
-        </div>
-      );
+
+        return (
+          <div className="game-progress-component">
+            <p className="text">Question <strong>{currentQuestionNumber}</strong> of {totalQuestionsNumber}</p>
+          </div>
+        );
+
     }
 });
 
