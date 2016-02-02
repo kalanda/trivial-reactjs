@@ -22,9 +22,9 @@ var App = React.createClass({
      */
     getInitialState: function() {
       return {
-        gameStarted : false,
-        gameOver : false,
-        gameFinished : false,
+        isGameStarted : false,
+        isGameOver : false,
+        isGameFinished : false,
         currentQuestionNumber : 0,
         totalQuestionsNumber : Config.totalQuestions,
         currentQuestion : null,
@@ -39,7 +39,7 @@ var App = React.createClass({
     startGame : function(){
 
       this.setState( Object.assign(this.getInitialState(), {
-        gameStarted: true,
+        isGameStarted: true,
       }));
 
       this.fetchNewQuestion();
@@ -62,8 +62,8 @@ var App = React.createClass({
      */
     endWithGameOver : function(){
       this.setState( Object.assign(this.getInitialState(), {
-        gameStarted: true,
-        gameOver : true,
+        isGameStarted: true,
+        isGameOver : true,
       }));
     },
 
@@ -72,7 +72,7 @@ var App = React.createClass({
      */
     endWithResults : function(){
       this.setState({
-        gameFinished : true,
+        isGameFinished : true,
         currentQuestionNumber : 0,
         currentQuestion : null,
       });
@@ -83,7 +83,7 @@ var App = React.createClass({
      */
     fetchNewQuestion : function(){
 
-      this.setState({ currentQuestion : null });
+      //this.setState({ currentQuestion : null });
 
       QuestionsFactory.generateQuestion(function(question){
         console.log('new question', question);
@@ -126,9 +126,9 @@ var App = React.createClass({
     render : function() {
 
         let {
-              gameOver,
-              gameStarted,
-              gameFinished,
+              isGameOver,
+              isGameStarted,
+              isGameFinished,
               currentQuestion,
               answeredQuestions,
               currentQuestionNumber,
@@ -155,7 +155,7 @@ var App = React.createClass({
 
             <Header subtitle={headerSubtitle}/>
 
-            { !gameStarted ? (<Welcome onClickStart={this.startGame}/>) : null }
+            { !isGameStarted ? (<Welcome onClickStart={this.startGame}/>) : null }
 
             { currentQuestionNumber > 0 ? (
               <GameProgress
@@ -173,7 +173,7 @@ var App = React.createClass({
                     />) : null
             }
 
-            { gameFinished ? (
+            { isGameFinished ? (
               <GameResults
                 correctAnswers={correctAnswers}
                 totalAnswers={totalQuestionsNumber}
@@ -181,7 +181,10 @@ var App = React.createClass({
               />) : null
             }
 
-            { gameOver ? (<GameOver onClickRestart={this.startGame}/>) : null }
+            { isGameOver ? (
+              <GameOver
+                onClickRestart={this.startGame}
+              /> ) : null }
 
             <AnsweredQuestionList
               questions={answeredQuestions}
