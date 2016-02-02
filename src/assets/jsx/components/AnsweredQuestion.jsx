@@ -19,13 +19,13 @@ var AnsweredQuestion = React.createClass({
       if (isCorrect) {
         answerText = (
           <p className="answered-text">
-            <span className="result-correct">27</span>
+            <span className="result-correct">{userAnswer}</span>
           </p>
         );
       } else {
         answerText = (
           <p className="answered-text">
-            <span className="result-wrong">27</span>
+            <span className="result-wrong">{userAnswer}</span>
             <span className="correct-answer"> - the correct answer is {correctAnswer}</span>
           </p>
         );
