@@ -16,7 +16,6 @@ var QuestionForm = React.createClass({
     getInitialState: function(){
       return {
         elapsedTime: 0.0,
-        questionSubmitted: false,
         selectedAnswer: undefined
       }
     },
@@ -55,10 +54,8 @@ var QuestionForm = React.createClass({
 
       if(selectedAnswer){
         if (onUserAnswer) {
-          this.setState({
-            questionSubmitted : true
-          });
           onUserAnswer(selectedAnswer);
+          this.setState(this.getInitialState());
         }
       }
     },
@@ -69,6 +66,7 @@ var QuestionForm = React.createClass({
       let possibleAnswers = this.props.possibleAnswers;
       let handleSubmit = this.props.handleSubmit;
       let timerPercent = (100*this.state.elapsedTime)/Config.maxSecondsToAnswer;
+      let selectedAnswer = this.state.selectedAnswer;
 
       return (
         <form className="question-form-component" onSubmit={this.handleSubmit}>
@@ -83,6 +81,7 @@ var QuestionForm = React.createClass({
                   name="answer-option"
                   label={answer}
                   value={answer}
+                  checked={selectedAnswer === answer}
                   onChange={this.handleChange}
                 />
               );
@@ -91,7 +90,7 @@ var QuestionForm = React.createClass({
           <p>
             <Button
               text="Accept"
-              disabled={this.state.questionSubmitted || !this.state.selectedAnswer}
+              disabled={!this.state.selectedAnswer}
             />
           </p>
         </form>
