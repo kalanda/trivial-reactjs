@@ -212,29 +212,6 @@ module.exports = function(grunt) {
             }
         },
 
-        jshint: {
-            options: {
-                reporter: require('jshint-stylish'),
-                strict: false,
-                es3: true,
-                curly: false,
-                eqeqeq: false,
-
-                // RELAX
-                // asi: true,
-                // lastsemic: true,
-                // eqnull: true,
-                // globalstrict: true,
-                // evil: true,
-                browser: true,
-                jquery: true
-            },
-            target: [
-                '<%= app.source %>/assets/js/*.js',
-                '!<%= app.source %>/assets/js/vendor/*.js' // exclude vendors
-            ]
-        },
-
         uglify: {
           dist: {
             options: {
