@@ -16,13 +16,13 @@
 
 Start local server:
 
-    $ grunt server
+    $ npm run server
 
 Then open [http://0.0.0.0:9000](http://0.0.0.0:9000) in your browser. All changes in files will be automatically reloaded.
 
 ### Generating build
 
-    $ grunt build
+    $ npm run build
 
 Generated build is placed at `dist` folder
 
