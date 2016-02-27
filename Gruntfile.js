@@ -48,10 +48,7 @@ module.exports = function(grunt) {
                 debug: true,
                 extensions: ['.jsx','.js']
               },
-              transform: [['babelify', {
-                plugins: ['transform-react-jsx'],
-                presets: ['es2015', 'react']
-              }]]
+              transform: [['babelify']]
             },
             files: {
               '.tmp/<%= app.baseurl %>/assets/js/build.js': '<%= app.source %>/assets/jsx/index.jsx'
@@ -63,12 +60,7 @@ module.exports = function(grunt) {
                 debug: false,
                 extensions: ['.jsx','.js']
               },
-              transform: [
-                ['babelify', {
-                  plugins: ['transform-react-jsx'],
-                  presets: ['es2015', 'react']
-                }]
-              ]
+              transform: [['babelify']]
             },
             files: {
               '<%= app.dist %>/assets/js/build.js': '<%= app.source %>/assets/jsx/index.jsx'
