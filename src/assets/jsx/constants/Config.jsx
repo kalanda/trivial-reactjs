@@ -1,4 +1,4 @@
-import TypesOfQuestions from './TypesOfQuestions'
+import TypesOfQuestions from './TypesOfQuestions';
 
 const Config = {
   totalQuestions: 10,

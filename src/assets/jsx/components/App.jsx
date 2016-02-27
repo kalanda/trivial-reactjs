@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import Config from '../constants/Config';
 import TypesOfQuestions from '../constants/TypesOfQuestions';
@@ -14,184 +13,177 @@ import GameOver from './GameOver';
 
 import * as QuestionsFactory from '../utils/QuestionsFactory';
 
-var App = React.createClass({
+const App = React.createClass({
 
-    /**
-     * Returns the initial state for the application
-     * @return {object} Initial state
-     */
-    getInitialState: function() {
-      return {
-        isGameStarted : false,
-        isGameOver : false,
-        isGameFinished : false,
-        currentQuestionNumber : 0,
-        totalQuestionsNumber : Config.totalQuestions,
-        currentQuestion : null,
-        answeredQuestions : [],
-        correctAnswers : 0
-      }
-    },
+  /**
+   * Returns the initial state for the application
+   * @return {object} Initial state
+   */
+  getInitialState() {
+    return {
+      isGameStarted: false,
+      isGameOver: false,
+      isGameFinished: false,
+      currentQuestionNumber: 0,
+      totalQuestionsNumber: Config.totalQuestions,
+      currentQuestion: null,
+      answeredQuestions: [],
+      correctAnswers: 0,
+    };
+  },
 
-    /**
-     * Starts the game
-     */
-    startGame : function(){
+  /**
+   * Starts the game
+   */
+  startGame() {
+    this.setState(Object.assign(this.getInitialState(), {
+      isGameStarted: true,
+    }));
 
-      this.setState( Object.assign(this.getInitialState(), {
-        isGameStarted: true,
-      }));
+    this.fetchNewQuestion();
+  },
 
-      this.fetchNewQuestion();
-    },
+  /**
+   * Go to next question
+   */
+  gotoNextQuestion() {
+    const { currentQuestionNumber, totalQuestionsNumber } = this.state;
+    const isLast = (currentQuestionNumber === totalQuestionsNumber);
 
-    /**
-     * Go to next question
-     */
-    gotoNextQuestion : function(){
+    if (!isLast) this.fetchNewQuestion();
+    else this.endWithResults();
+  },
 
-      let { currentQuestionNumber, totalQuestionsNumber } = this.state;
-      let isLast = (currentQuestionNumber == totalQuestionsNumber) ? true : false;
+  /**
+   * Finishes the game showing game over screen
+   */
+  endWithGameOver() {
+    this.setState(Object.assign(this.getInitialState(), {
+      isGameStarted: true,
+      isGameOver: true,
+    }));
+  },
 
-      if (!isLast) this.fetchNewQuestion();
-      else this.endWithResults();
-    },
+  /**
+   * Finishes showing the results
+   */
+  endWithResults() {
+    this.setState({
+      isGameFinished: true,
+      currentQuestionNumber: 0,
+      currentQuestion: null,
+    });
+  },
 
-    /**
-     * Finishes the game showing game over screen
-     */
-    endWithGameOver : function(){
-      this.setState( Object.assign(this.getInitialState(), {
-        isGameStarted: true,
-        isGameOver : true,
-      }));
-    },
-
-    /**
-     * Finishes showing the results
-     */
-    endWithResults : function(){
+  /**
+   * Generates a new question using the QuestionsFactory
+   */
+  fetchNewQuestion() {
+    QuestionsFactory.generateQuestion((question) => {
       this.setState({
-        isGameFinished : true,
-        currentQuestionNumber : 0,
-        currentQuestion : null,
+        currentQuestion: question,
+        currentQuestionNumber: this.state.currentQuestionNumber + 1,
       });
-    },
+    });
+  },
 
-    /**
-     * Generates a new question using the QuestionsFactory
-     */
-    fetchNewQuestion : function(){
+  /**
+   * Handles the answer from the users from current question form
+   * @param  {string} userAnswer [description]
+   */
+  handleUserAnswer(userAnswer) {
+    let correctAnswers = this.state.correctAnswers;
+    const answeredQuestion = {
+      questionText: this.state.currentQuestion.questionText,
+      userAnswer,
+      correctAnswer: this.state.currentQuestion.correctAnswer,
+    };
 
-      //this.setState({ currentQuestion : null });
+    if (answeredQuestion.correctAnswer === answeredQuestion.userAnswer) {
+      correctAnswers++;
+    }
 
-      QuestionsFactory.generateQuestion(function(question){
-        this.setState({
-          currentQuestion : question,
-          currentQuestionNumber : this.state.currentQuestionNumber+1,
-        })
-      }.bind(this));
-    },
+    this.setState({
+      answeredQuestions: [answeredQuestion].concat(this.state.answeredQuestions),
+      correctAnswers,
+    });
 
-    /**
-     * Handles the answer from the users from current question form
-     * @param  {string} userAnswer [description]
-     */
-    handleUserAnswer : function(userAnswer){
+    this.gotoNextQuestion();
+  },
 
-      let correctAnswers = this.state.correctAnswers;
+  /**
+   * Render
+   */
+  render() {
+    const {
+          isGameOver,
+          isGameStarted,
+          isGameFinished,
+          currentQuestion,
+          answeredQuestions,
+          currentQuestionNumber,
+          totalQuestionsNumber,
+          correctAnswers,
+        } = this.state;
 
-      let answeredQuestion = {
-        questionText : this.state.currentQuestion.questionText,
-        userAnswer: userAnswer,
-        correctAnswer: this.state.currentQuestion.correctAnswer
-      };
+    let headerSubtitle;
 
-      if (answeredQuestion.correctAnswer == answeredQuestion.userAnswer) {
-        correctAnswers++;
-      }
+    switch (Config.typeOfQuestions) {
+      case TypesOfQuestions.ABOUT_YEARS:
+        headerSubtitle = 'of years';
+        break;
 
-      this.setState({
-        answeredQuestions : [answeredQuestion].concat(this.state.answeredQuestions),
-        correctAnswers : correctAnswers
-      });
+      case TypesOfQuestions.ABOUT_NUMBERS:
+        headerSubtitle = 'of numbers';
+        break;
 
-      this.gotoNextQuestion();
-    },
+      default:
+        headerSubtitle = '';
+    }
 
-    /**
-     * Render
-     */
-    render : function() {
+    return (
+      <div className="app-component">
 
-        let {
-              isGameOver,
-              isGameStarted,
-              isGameFinished,
-              currentQuestion,
-              answeredQuestions,
-              currentQuestionNumber,
-              totalQuestionsNumber,
-              correctAnswers,
-            } = this.state;
+        <Header subtitle={headerSubtitle} />
 
-        let headerSubtitle;
+        { !isGameStarted ? (<Welcome onClickStart={this.startGame} />) : null }
 
-        switch(Config.typeOfQuestions) {
-          case TypesOfQuestions.ABOUT_YEARS:
-                  headerSubtitle = "of years";
-                  break;
-
-          case TypesOfQuestions.ABOUT_NUMBERS:
-                  headerSubtitle = "of numbers";
-                  break;
-
-          default: headerSubtitle = "";
+        { currentQuestionNumber > 0 ? (
+          <GameProgress
+            currentQuestionNumber={currentQuestionNumber}
+            totalQuestionsNumber={totalQuestionsNumber}
+          />) : null
         }
 
-        return (
-          <div className="app-component">
+        { currentQuestion ? (
+          <QuestionForm
+            questionText={currentQuestion.questionText}
+            possibleAnswers={currentQuestion.possibleAnswers}
+            onUserAnswer={this.handleUserAnswer}
+            onTimeout={this.endWithGameOver}
+          />) : null
+        }
 
-            <Header subtitle={headerSubtitle}/>
+        { isGameFinished ? (
+          <GameResults
+            correctAnswers={correctAnswers}
+            totalAnswers={totalQuestionsNumber}
+            onClickRestart={this.startGame}
+          />) : null
+        }
 
-            { !isGameStarted ? (<Welcome onClickStart={this.startGame}/>) : null }
+        { isGameOver ? (
+          <GameOver
+            onClickRestart={this.startGame}
+          />) : null }
 
-            { currentQuestionNumber > 0 ? (
-              <GameProgress
-                currentQuestionNumber={currentQuestionNumber}
-                totalQuestionsNumber={totalQuestionsNumber}
-              /> ) : null
-            }
+        <AnsweredQuestionList
+          questions={answeredQuestions}
+        />
 
-            { currentQuestion ? (
-                    <QuestionForm
-                      questionText={currentQuestion.questionText}
-                      possibleAnswers={currentQuestion.possibleAnswers}
-                      onUserAnswer={this.handleUserAnswer}
-                      onTimeout={this.endWithGameOver}
-                    />) : null
-            }
-
-            { isGameFinished ? (
-              <GameResults
-                correctAnswers={correctAnswers}
-                totalAnswers={totalQuestionsNumber}
-                onClickRestart={this.startGame}
-              />) : null
-            }
-
-            { isGameOver ? (
-              <GameOver
-                onClickRestart={this.startGame}
-              /> ) : null }
-
-            <AnsweredQuestionList
-              questions={answeredQuestions}
-            />
-
-          </div>
-        );
-    }
+      </div>
+    );
+  },
 });
 
 export default App;

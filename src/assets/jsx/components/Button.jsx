@@ -1,26 +1,26 @@
 import React from 'react';
 
-var Button = React.createClass({
+const Button = React.createClass({
 
-    propTypes: {
-      text: React.PropTypes.string.isRequired,
-      onClick: React.PropTypes.func,
-      disabled: React.PropTypes.bool,
-    },
+  propTypes: {
+    text: React.PropTypes.string.isRequired,
+    onClick: React.PropTypes.func,
+    disabled: React.PropTypes.bool,
+  },
 
-    handleClick: function(event){
-      if (this.props.onClick) this.props.onClick(event);
-    },
+  handleClick(event) {
+    if (this.props.onClick) this.props.onClick(event);
+  },
 
-    render: function() {
-      return (
-        <button
-          className="button-component"
-          onClick={this.handleClick}
-          disabled={this.props.disabled}
-          >{this.props.text}</button>
-      );
-    }
+  render() {
+    return (
+      <button
+        className="button-component"
+        onClick={this.handleClick}
+        disabled={this.props.disabled}
+      >{this.props.text}</button>
+    );
+  },
 });
 
 export default Button;
