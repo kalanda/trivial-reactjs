@@ -1,5 +1,5 @@
 // Init framework
-@function parseInt($n) {
+@function parse-int($n) {
   @return $n / ($n * 0 + 1);
 }
 
@@ -11,7 +11,7 @@
     @if $value == '0px' or $value == auto {
       $return: append($return, $value);
     } @else if type-of($value) == number {
-      $value: parseInt($value);
+      $value: parse-int($value);
       $return: append($return, ($value / $root) * 1rem);
     } @else {
       $return: append($return, $value);

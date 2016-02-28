@@ -1,20 +1,18 @@
-/**
- * Base classes to use with @extend
- */
+// Base classes to use with @extend
 
-/* Apply clearfix to container of floating blocks */
+// Apply clearfix to container of floating blocks
 %group {
   &:after {
-    content: ".";
+    content: '.';
     display: block;
-    height: 0px;
+    height: 0;
     clear: both;
     visibility: hidden;
   }
 }
 
-/* Needed to vertically center the content */
-%v_wrapper {
+// Needed to vertically center the content
+%v-wrapper {
   &:before {
     content: '';
     display: inline-block;
@@ -23,7 +21,7 @@
   }
 }
 
-%v_block {
+%v-block {
   display: inline-block;
   vertical-align: middle;
   width: 95%;

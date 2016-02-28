@@ -32,6 +32,7 @@
     "grunt-svgmin": "^2.0.0",
     "jit-grunt": "^0.9.1",
     "jquery": "^2.2.0",
+    "sass-lint": "^1.5.1",
     "time-grunt": "^1.2.1"
   },
   "dependencies": {
@@ -42,6 +43,7 @@
   "scripts": {
     "server": "grunt server",
     "build": "grunt build",
-    "lint": "eslint src/**/*.jsx"
+    "eslint": "eslint src/**/*.jsx",
+    "sasslint": "sass-lint -v"
   }
 }

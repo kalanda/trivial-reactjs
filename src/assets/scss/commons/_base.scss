@@ -1,27 +1,39 @@
 
 html {
+  @include optimize-legibility;
   background-color: $default-color-app-background;
   font-family: $default-font-family;
   font-size: 100%;
-  @include optimize-legibility();
 }
 
 body {
+  @include optimize-legibility;
   background-color: $default-color-app-background;
   color: $default-color-app-text;
   font-family: $default-font-family;
-  @include optimize-legibility();
 }
 
-button, input {
+button,
+input {
   font-family: $default-font-family;
 }
 
-a, button, input {
+a,
+button,
+input {
+  @include optimize-legibility;
   outline: none;
-  @include optimize-legibility();
 }
 
 img {
   vertical-align: middle;
+}
+
+* {
+  box-sizing: border-box;
+
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
 }
