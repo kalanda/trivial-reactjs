@@ -2,7 +2,9 @@
   "extends": "airbnb",
 
   "rules": {
+    "no-confusing-arrow": [0], // disabled until bug is fixed in ESLINT
     "arrow-body-style": [0], // disabled until bug is fixed in ESLINT
     "react/prefer-es6-class": [0],
+    "react/prefer-stateless-function" : [0],
   }
 }
