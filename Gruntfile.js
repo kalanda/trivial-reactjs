@@ -238,7 +238,7 @@ module.exports = function(grunt) {
     });
 
     // Define Tasks
-    grunt.registerTask('server', [
+    grunt.registerTask('serve', [
         'clean:server',
         'sass:server',
         'autoprefixer:server',

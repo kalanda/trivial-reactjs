@@ -4,6 +4,12 @@
   "private": true,
   "description": "Trivial game made with React",
   "author": "kalanda",
+  "scripts": {
+    "serve": "grunt serve",
+    "build": "grunt build",
+    "eslint": "eslint src/**/*.jsx",
+    "sasslint": "sass-lint -v"
+  },
   "devDependencies": {
     "babel-eslint": "^5.0.0",
     "babel-plugin-transform-react-jsx": "^6.5.2",
@@ -39,11 +45,5 @@
     "jquery": "^2.2.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
-  },
-  "scripts": {
-    "server": "grunt server",
-    "build": "grunt build",
-    "eslint": "eslint src/**/*.jsx",
-    "sasslint": "sass-lint -v"
   }
 }

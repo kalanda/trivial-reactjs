@@ -7,7 +7,6 @@
 
 ## Installation
 
-    $ npm install -g grunt-cli
     $ ./install.sh
 
 ## Usage
