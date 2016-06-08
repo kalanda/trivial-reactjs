@@ -146,36 +146,40 @@ const App = React.createClass({
 
         <Header subtitle={headerSubtitle} />
 
-        { !isGameStarted ? (<Welcome onClickStart={this.startGame} />) : null }
+        {(!isGameStarted) ?
+          <Welcome onClickStart={this.startGame} />
+          : null
+        }
 
-        { currentQuestionNumber > 0 ? (
+        {(currentQuestionNumber > 0) ?
           <GameProgress
             currentQuestionNumber={currentQuestionNumber}
             totalQuestionsNumber={totalQuestionsNumber}
-          />) : null
+          /> : null
         }
 
-        { currentQuestion ? (
+        {(currentQuestion) ?
           <QuestionForm
             questionText={currentQuestion.questionText}
             possibleAnswers={currentQuestion.possibleAnswers}
             onUserAnswer={this.handleUserAnswer}
             onTimeout={this.endWithGameOver}
-          />) : null
+          /> : null
         }
 
-        { isGameFinished ? (
+        {(isGameFinished) ?
           <GameResults
             correctAnswers={correctAnswers}
             totalAnswers={totalQuestionsNumber}
             onClickRestart={this.startGame}
-          />) : null
+          /> : null
         }
 
-        { isGameOver ? (
+        {(isGameOver) ?
           <GameOver
             onClickRestart={this.startGame}
-          />) : null }
+          /> : null
+        }
 
         <AnsweredQuestionList
           questions={answeredQuestions}

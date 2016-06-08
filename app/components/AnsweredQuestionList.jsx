@@ -23,7 +23,7 @@ const AnsweredQuestionList = React.createClass({
           />
         );
       })}
-     </div>
+      </div>
     );
   },
 });

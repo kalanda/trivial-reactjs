@@ -31,10 +31,10 @@ const AnsweredQuestion = React.createClass({
     }
 
     return (
-        <div className="answered-question-component">
-          <p className="question-text">{questionText}</p>
-          {answerText}
-        </div>
+      <div className="answered-question-component">
+        <p className="question-text">{questionText}</p>
+        {answerText}
+      </div>
     );
   },
 });

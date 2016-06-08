@@ -18,7 +18,7 @@
         display: inline-block;
         width: 22px;
         height: 22px;
-        background: url('../images/components/InputRadio/unchecked.svg') 0 50% no-repeat;
+        background: url('/assets/images/components/InputRadio/unchecked.svg') 0 50% no-repeat;
         margin-right: 12px;
         vertical-align: -4px;
         transition: 200ms background;
@@ -31,7 +31,7 @@
         font-weight: bold;
 
         &:before {
-          background: url('../images/components/InputRadio/checked.svg') 0 50% no-repeat;
+          background: url('/assets/images/components/InputRadio/checked.svg') 0 50% no-repeat;
         }
       }
     }
