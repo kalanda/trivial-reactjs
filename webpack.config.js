@@ -90,8 +90,8 @@ function getConfiguration() {
           loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass?sourceMap'),
           exclude: settings.nodeModulesPath,
         },
-        { test: /\.jpe?g$|\.gif$|\.png$/, loader: 'file?name=statics/[name].[ext]' },
-        { test: /\.svg$|\.eot$|\.woff$|\.woff2$|\.ttf$/, loader: 'file?name=statics/[name].[ext]' },
+        { test: /\.jpe?g$|\.gif$|\.png$/, loader: 'file' },
+        { test: /\.svg$|\.eot$|\.woff$|\.woff2$|\.ttf$/, loader: 'file' },
       ],
     },
     postcss: [
