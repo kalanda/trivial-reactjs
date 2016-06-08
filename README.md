@@ -17,7 +17,7 @@ Start local server:
 
     $ npm run serve
 
-Then open [http://0.0.0.0:9000](http://0.0.0.0:8080) in your browser. All changes in files will be automatically reloaded.
+Then open [http://0.0.0.0:8080](http://0.0.0.0:8080) in your browser. All changes in files will be automatically reloaded.
 
 ### Generating build
 
