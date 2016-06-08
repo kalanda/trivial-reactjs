@@ -19,7 +19,7 @@
       padding-left: 28px;
       line-height: 28px;
       display: inline-block;
-      background: url('/assets/images/components/AnswersList/result-correct.svg') 0 50% no-repeat;
+      background: url('../assets/images/components/AnswersList/result-correct.svg') 0 50% no-repeat;
     }
 
     .result-wrong {
@@ -27,7 +27,7 @@
       padding-left: 28px;
       line-height: 28px;
       display: inline-block;
-      background: url('/assets/images/components/AnswersList/result-wrong.svg') 0 50% no-repeat;
+      background: url('../assets/images/components/AnswersList/result-wrong.svg') 0 50% no-repeat;
     }
 
     .correct-answer {
