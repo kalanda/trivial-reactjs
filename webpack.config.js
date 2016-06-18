@@ -8,6 +8,7 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 /**
 * Configuration section.
@@ -17,7 +18,7 @@ const settings = {
   isProduction: process.env.NODE_ENV === 'production',
   srcPath: path.resolve(__dirname, 'app'),
   buildPath: path.resolve(__dirname, 'build'),
-  publicPath: '/',
+  publicPath: '',
   nodeModulesPath: path.resolve(__dirname, 'node_modules/'),
   jsEntry: path.resolve(__dirname, 'app/index.jsx'),
 };
@@ -41,7 +42,11 @@ function getEntrySources() {
 function getPlugins() {
   const plugins = [];
   plugins.push(new webpack.NoErrorsPlugin());
-  plugins.push(new ExtractTextPlugin('[name].css'));
+  plugins.push(new ExtractTextPlugin('[name].[hash].css'));
+  plugins.push(new HtmlWebpackPlugin({
+    title: 'Trivial',
+    template: './app/index.html'
+  }));
 
   // Only production plugins
   if (settings.isProduction) {
@@ -55,7 +60,6 @@ function getPlugins() {
       },
     }));
     plugins.push(CopyWebpackPlugin([
-      { from: './app/index.html', to: 'index.html' },
       { from: './app/assets/', to: 'assets/' },
     ]));
   }
@@ -69,7 +73,7 @@ function getConfiguration() {
     output: {
       path: settings.buildPath,
       publicPath: settings.publicPath,
-      filename: 'bundle.js',
+      filename: 'bundle.[hash].js',
     },
     module: {
       preLoaders: [
